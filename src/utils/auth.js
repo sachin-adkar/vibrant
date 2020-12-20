@@ -3,6 +3,11 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const config = require('./configs');
 
+/**
+ * Utility functions for authentication
+ *
+ * @class Auth
+ */
 class Auth {
 
     static async getToken(params) {

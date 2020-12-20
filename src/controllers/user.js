@@ -4,6 +4,10 @@ const UserModel = require('../models/user');
 const authUtils = require('../utils/auth');
 const errorHandler = require('../utils/errorHandler');
 
+/**
+ * SignUp route, creates a new entry for the user in the database
+ * On success, return the userId and jwt token
+ */
 router.post('/signUp', validationSignUp(), validate, async (req, res, next) => {
     try {
         req.body.password = await authUtils.hashPassword(req.body);
@@ -15,7 +19,10 @@ router.post('/signUp', validationSignUp(), validate, async (req, res, next) => {
     }
 });
 
-
+/**
+ * Login route, validates the user email and password
+ * and returns a jwt token on successful authentication
+ */
 router.post('/login', validationLogin(), validate, async (req, res, next) => {
     try {
         const result = await UserModel.getUser(req.body);

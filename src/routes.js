@@ -7,6 +7,6 @@ const authUtils = require('./utils/auth');
 module.exports = (app) => {
     //User routes
     app.use('/v1.0', user);
-    //Blog routes
+    //Blog routes (protected)
     app.use('/v1.0', authUtils.authenticate, blog);
 };

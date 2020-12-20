@@ -1,3 +1,6 @@
+/**
+ * Schema for user collection
+ */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

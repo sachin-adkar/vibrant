@@ -80,6 +80,14 @@ const validate = (req, res, next) => {
     });
 };
 
+/**
+ * Validation rules for /updateBlog
+ *
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ * @returns
+ */
 const validateUpdateBlog = (req, res, next) => {
     if ((!req.body.title && !req.body.description)
         || (!req.body.title.trim() && !req.body.description.trim())
@@ -89,6 +97,11 @@ const validateUpdateBlog = (req, res, next) => {
     next();
 }
 
+/**
+ *Validation rules for add comments
+ *
+ * @returns
+ */
 const validateComments = () => {
     return [check('userId', 'Enter user Id').notEmpty(),
     check('blogId', 'Enter user Id').notEmpty(),
@@ -96,6 +109,11 @@ const validateComments = () => {
     ]
 };
 
+/**
+ * Generic method for validating the Object ids 
+ *
+ * @param {*} id
+ */
 const validateObjectId = async (id) => {
     try {
         const isValid = mongoose.Types.ObjectId.isValid(id);

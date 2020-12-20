@@ -11,6 +11,10 @@ const {
     validateObjectId
 } = require('../utils/validator');
 
+/**
+ * Route for creating a new blog
+ * @param : userId, title, description
+ */
 router.post('/createBlog', validateCreateBlog(), validate, async (req, res) => {
     try {
         await validateObjectId(req.body.userId);
@@ -21,6 +25,10 @@ router.post('/createBlog', validateCreateBlog(), validate, async (req, res) => {
     }
 });
 
+/**
+ * Route for fetching the blogs of a user
+ * @param : userId
+ */
 router.get('/getBlogs', validateGetBlogs(), validate, async (req, res) => {
     try {
         await validateObjectId(req.query.userId);
@@ -31,6 +39,10 @@ router.get('/getBlogs', validateGetBlogs(), validate, async (req, res) => {
     }
 });
 
+/**
+ * Fetches the blog using blogId
+ * @params : blogId
+ */
 router.get('/getBlogById', validateGetBlogById(), validate, async (req, res) => {
     try {
         await validateObjectId(req.query.blogId);
@@ -41,6 +53,10 @@ router.get('/getBlogById', validateGetBlogById(), validate, async (req, res) => 
     }
 });
 
+/**
+ * For editing the title or description
+ * @params : blogId, title, description
+ */
 router.patch('/updateBlog', validateUpdateBlog, async (req, res) => {
     try {
         await validateObjectId(req.body.blogId);
@@ -51,6 +67,10 @@ router.patch('/updateBlog', validateUpdateBlog, async (req, res) => {
     }
 });
 
+/**
+ * Soft delete operation for blogs 
+ * @params : blogId
+ */
 router.delete('/softDelete', validateGetBlogById(), validate, async (req, res, next) => {
     try {
         await validateObjectId(req.query.blogId);
@@ -61,6 +81,10 @@ router.delete('/softDelete', validateGetBlogById(), validate, async (req, res, n
     }
 });
 
+/**
+ * Delete a blog from database
+ * @params : blogId
+ */
 router.delete('/delete', validateGetBlogById(), validate, async (req, res, next) => {
     try {
         await validateObjectId(req.query.blogId);
@@ -71,6 +95,9 @@ router.delete('/delete', validateGetBlogById(), validate, async (req, res, next)
     }
 });
 
+/** 
+* Used for adding the comments on a blog 
+*/
 router.post('/addComment', validateComments(), validate, async (req, res, next) => {
     try {
         await validateObjectId(req.body.blogId);
@@ -82,6 +109,9 @@ router.post('/addComment', validateComments(), validate, async (req, res, next) 
     }
 });
 
+/**
+ * Fetches the comments using blogId
+ */
 router.get('/getComments', validateGetBlogById(), validate, async (req, res, next) => {
     try {
         await validateObjectId(req.query.blogId);

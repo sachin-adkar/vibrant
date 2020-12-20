@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
+/**
+ *Contains queries for blogs model
+ *
+ * @class Queries
+ */
 class Queries {
-
 
     static async getBlogs(params) {
         try {

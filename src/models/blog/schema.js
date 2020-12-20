@@ -1,3 +1,7 @@
+/**
+ * Schema for blogs collection
+ */
+
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 const UserModel = require('../user/index');

@@ -1,7 +1,20 @@
 const UserModel = require('./schema');
 
+/**
+ * Interactions with user collection
+ *
+ * @class User
+ */
 class User {
 
+    /**
+     * Creates a new entry in the user collection
+     *
+     * @static
+     * @param {*} params
+     * @returns
+     * @memberof User
+     */
     static async saveUser(params) {
         try {
             const UserData = new UserModel(params);
@@ -21,6 +34,15 @@ class User {
         }
     }
 
+
+    /**
+     *Returns the user data using email
+     *
+     * @static
+     * @param {*} params
+     * @returns
+     * @memberof User
+     */
     static async getUser(params) {
         try {
             const user = await UserModel.findOne({ email: params.email }).exec();
@@ -33,6 +55,14 @@ class User {
         }
     }
 
+    /**
+     * Returns the user data using userId
+     *
+     * @static
+     * @param {*} userId
+     * @returns
+     * @memberof User
+     */
     static async getUserById(userId) {
         try {
             const user = await UserModel.findOne({ _id: userId }).exec();
