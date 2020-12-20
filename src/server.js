@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ limit: '6mb', extended: true }));
 require('./routes')(app);
 
 //Server will start only after successful connection to database is established
-mongoose.connect(config.dbUrl + config.dbName, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+mongoose.connect(config.dbUrl, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
     if (err) {
         console.log('Failed to connect Database')
     } else {
